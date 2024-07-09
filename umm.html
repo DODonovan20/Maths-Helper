@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Calculator</title>
+    <style>
+        #percentages {
+            margin: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <section id="percentages">
+        <h2>Percentages %</h2>
+        <ul>
+            <li><p>What is <input type="number" class="percentage"> % of <input type="number" class="number">? Result: <span class="result"></span></p></li>    
+            <li><p>What is <input type="number" class="part"> as a percentage of <input type="number" class="whole">? Result: <span class="result"></span></p></li>
+        </ul>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select all the necessary input fields and result spans
+            const percentageInputs = document.querySelectorAll('.percentage');
+            const numberInputs = document.querySelectorAll('.number');
+            const partInputs = document.querySelectorAll('.part');
+            const wholeInputs = document.querySelectorAll('.whole');
+            const resultSpans = document.querySelectorAll('.result');
+
+            // Function to calculate percentage of a number
+            function calculatePercentage() {
+                const percentage = parseFloat(percentageInputs[0].value);
+                const number = parseFloat(numberInputs[0].value);
+
+                if (!isNaN(percentage) && !isNaN(number)) {
+                    const result = (percentage / 100) * number;
+                    resultSpans[0].textContent = result.toFixed(2);
+                } else {
+                    resultSpans[0].textContent = '';
+                }
+            }
+
+            // Function to calculate percentage of part over whole
+            function calculatePartOfWhole() {
+                const part = parseFloat(partInputs[0].value);
+                const whole = parseFloat(wholeInputs[0].value);
+
+                if (!isNaN(part) && !isNaN(whole) && whole !== 0) {
+                    const result = (part / whole) * 100;
+                    resultSpans[1].textContent = result.toFixed(2) + ' %';
+                } else {
+                    resultSpans[1].textContent = '';
+                }
+            }
+
+            // Add event listeners to recalculate on input change
+            percentageInputs[0].addEventListener('input', calculatePercentage);
+            numberInputs[0].addEventListener('input', calculatePercentage);
+            partInputs[0].addEventListener('input', calculatePartOfWhole);
+            wholeInputs[0].addEventListener('input', calculatePartOfWhole);
+        });
+    </script>
+</body>
+</html>
