@@ -1,0 +1,23 @@
+body {
+  font-family: sans-serif;
+  padding: 5px;
+}
+
+section {
+  padding: 5px;
+  background-color: aliceblue;
+}
+
+h2 {
+  color: navy;
+}
+
+ol > li {
+  list-style-type: none;
+}
+
+.result {
+  background-color: darkslateblue;
+  color: white;
+  padding: 3px;
+}
